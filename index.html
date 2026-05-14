@@ -1,4 +1,23 @@
 <!DOCTYPE HTML>
+<head>
+<script>
+async function fetchPoints() {
+  try {
+    const response = await fetch("https://epochtal.p2r3.com/api/users/get");
+    const data = await response.json();
+    
+    const linkElement = document.getElementById("points-link");
+    
+    linkElement.textContent = data['76561198123308419']['points']['random_ranked'];
+  } catch (error) {
+    console.error("err:", error);
+  }
+}
+
+fetchPoints();
+
+</script>
+</head>
 <body>
-<a>test</a>
+<a id="points-link" href="#">Points</a>
 </body>
