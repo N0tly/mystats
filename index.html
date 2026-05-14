@@ -1,20 +1,19 @@
 <!DOCTYPE HTML>
 <head>
 <script>
-async function fetchPoints() {
-  try {
-    const response = await fetch("https://epochtal.p2r3.com/api/users/get");
-    const data = await response.json();
-    
-    const linkElement = document.getElementById("points-link");
-    
-    linkElement.textContent = data['76561198123308419']['points']['random_ranked'];
-  } catch (error) {
-    console.error("err:", error);
-  }
-}
+const cors = require('cors');
+app.use(cors({ origin: 'https://n0tly.github.io' }));
 
-fetchPoints();
+const proxy = 'herokuapp.com';
+const url = 'https://epochtal.p2r3.com/api/users/get';
+
+fetch(proxy + url)
+  .then((response) => {
+    console.log(response.json());
+  })
+  .then((data) => {
+    console.log(data);
+  });
 
 </script>
 </head>
